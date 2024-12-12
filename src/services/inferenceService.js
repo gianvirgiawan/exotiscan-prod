@@ -305,6 +305,7 @@ async function predictClassification(model, image) {
       eatingType,
       funFact,
       confidenceScore,
+      animalImage,
     };
   } catch (error) {
     throw new InputError(`Terjadi kesalahan input: ${error.message}`);

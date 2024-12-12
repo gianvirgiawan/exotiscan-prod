@@ -6,7 +6,6 @@ async function postPredictHandler(request, h) {
   const { image } = request.payload;
   const { model } = request.server.app;
 
-  // const { confidenceScore, label, explanation, suggestion } =
   const {
     label,
     commonName,
@@ -21,6 +20,7 @@ async function postPredictHandler(request, h) {
     funFact,
     eatingType,
     confidenceScore,
+    animalImage,
   } = await predictClassification(model, image);
   const id = crypto.randomUUID();
   const createdAt = new Date().toISOString();
@@ -41,6 +41,7 @@ async function postPredictHandler(request, h) {
     eatingType: eatingType,
     confidenceScore: confidenceScore,
     createdAt: createdAt,
+    animalImage: animalImage,
   };
 
   const response = h.response({
